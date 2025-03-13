@@ -2,7 +2,7 @@
 
 Main Repository for the StudyConnect Project
 
-## Projektname
+## Project Description
 
 StudyConnect – Platfform für Lern- und Projektgruppen
 
