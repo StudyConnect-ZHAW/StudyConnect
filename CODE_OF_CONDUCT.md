@@ -9,59 +9,84 @@
 
 If you have questions, blockers, or issues, talk to the responsible person first. If the responsible person can't help, or you don't get a response within a reasonable time, escalate to Adrian.
 
----
+## Conventional Commits
 
-### 1. Respect
+Developers should use the Conventional Commits standard when committing changes to the codebase.
 
-- Be respectful in discussions.
-- No interrupting, no personal attacks.
-- Feedback should be objective and constructive.
+| Type     | Description                                                           |
+|----------|-----------------------------------------------------------------------|
+| feat     | Declares a new feature has been added                                 |
+| fix      | Declares a bug have been fixed                                        |
+| chore    | Declares changes which don’t modify source or test files (eg. assets) |
+| ci       | Declares a change on the CI or CD process                             |
+| build    | Declares changes on the build setup                                   |
+| docs     | Declares changes to documentation                                     |
+| refactor | Declares a change of code without an effective change on the program  |
+| revert   | Declares that a previous commit has been reverted                     |
+| test     | Declares changes on tests                                             |
+| planning | Project planning task                                                 |
+| bug      | Something isn't working                                               |
+| feedback | Require feedback                                                      |
+| wontfix  | This will not be worked on                                            |
 
-### 2. Communication
+### Examples
 
-- Keep it clear, direct, and on point.
-- Bring up blockers early - do not wait until the last minute.
-- Ask questions when you are stuck - someone probably knows the answer. You can always create an issue to write the question down.
+#### Commit Message
+```
+refactor: adjust vehicle texture size [#ISSUENUMBER]
+refactor: adjust vehicle texture size [NOISSUE]
+```
 
-### 3. Responsibility
+#### Branch Name
+```
+refactor/#ISSUENUMBER_adjust-vehicle-texture-size
+refactor/NOISSUE_adjust-vehicle-texture-size
+```
 
-- Own your tasks. If you can't deliver on time, let the team know ASAP.
-- Document what you do so others can understand or pick up where you left off.
-- Review code like you'd want yours reviewed - honest, respectful, and focused on improvement.
+## Contributing
+Developers should follow the following guidelines when contributing to the project:
 
-### 4. Meetings
+### 1. Create a new branch
+When starting work on a new feature or bug fix, create a new branch from the `main` branch. The name of the branch should be descriptive and should include the issue number and a short description of the feature or bug fix. For example, if you are working on issue #123, the branch name should be `feat/#123_add-new-feature`.
 
-- Show up on time. If you are held up or can't make it, let the team know on Teams or WhatsApp.
-- Action points and tasks are written down in each meeting protocol, including deadlines. Meeting protocols are located in the Teams channel under [Documents/General/Files](https://zhaw.sharepoint.com/:f:/r/sites/PM4-StudyConnect/Freigegebene%20Dokumente/General/Files?csf=1&web=1&e=CHFwAE).
-- To keep meetings short and efficient, stick to the agenda. Detailed discussions about specific implementations should be handled within your team (Frontend/Backend) and with your team lead. Bring only important decisions and blockers back to the larger group when needed.
+### 2. Commit changes
+When committing changes to the codebase, developers should follow the [Conventional Commits](#conventional-commits) standard. This will ensure that the commit messages are consistent and descriptive, and will allow the commit history to be automatically parsed to generate release notes.
 
-### 5. No Drama
+### 3. Create a draft pull request
+After committing changes to the codebase, create a draft pull request with the prefix `PR: ` to inform other developers that you are working on a new feature or bug fix. The pull request should be kept in draft mode until the feature or bug fix is complete.
 
-- No insults, no passive-aggressive comments, no ghosting (e.g., ignoring messages or dropping tasks without communication).
-- If something - whether it's a situation, task, or team dynamic - bring it up early and respectfully. Don't let things build up.
-- If you're not comfortable addressing it directly, or if it's not getting resolved, talk to your team lead or Adrian (Scrum Master).
+### 4. Create a pull request
+When the feature or bug fix is complete, mark the pull request as ready to review to merge the changes into the `main` branch. The pull request should be reviewed by at least one other developer before it can be merged.
 
-### 6. Inclusivity
+### 5. Review pull request
+When a pull request is marked as ready for review, it should be reviewed by at least two other developers. The reviewer should verify that the code meets the [Definition of Done](#definition-of-done).
 
-- Everyone's voice counts. We are 8 people, and we all contribute.
-- Feel free to voice concerns or bring up questions. Everyone will likely benefit — either by gaining a better understanding or by helping define a clearer direction for the project.
+### 6. Merge pull request
+Once the pull request has been reviewed and approved, it can be merged into the `main` branch. The pull request should be merged using the "Rebase and merge" option to ensure that the commit history remains clean and concise.
 
-### 7. Use of LLMs and Tools
+## Definition of Done
 
-- You are allowed to use tools like ChatGPT, GitHub Copilot, and so on to help you write code, documentation, or brainstorm solutions.
-- **However**, if you commit code:
-  * You must fully understand what it does.
-  * You are responsible for ensuring it works as intended and does nothing more.
-  * No blindly copying and pasting - review, test, and think!
-- Security, data privacy, and performance are your responsibility when using auto-generated code.
+### 1. Code meets coding standards
+All code must adhere to the rules defined in the Clean Code handbook for at least level L1. Level L2 rules should also be taken into consideration. Specifically, emphasis should be placed on:
 
-### 8. Git and GitHub Etiquette
+1. Correct abstraction level: The code should have a clear and appropriate level of abstraction, with well-defined interfaces and separation of concerns.
+2. Class diagram: The class diagram should be clear and well-organized, with high cohesion and low coupling between classes.
+3. Correct error handling: The code should handle errors correctly, including validating arguments and handling exceptions in a consistent and appropriate manner.
 
-- Write clear, descriptive commit messages.
-- New code should be pushed into the `dev` branch before merging into `main`.
-- Always create a new branch for your tasks from the `dev` branch.
-- Group branches depending on their purpose, e.g. feature branches should have the `feature/` prefix, documentation branches should have the `doc/` prefix. This way they automatically get placed in a "folder".
-- Pull requests should have the `PR: ` prefix, so it's easier to distinguish them in the project view.
+### 2. Unit tests pass
+All code changes must be accompanied by unit tests that verify the expected behavior of the code. These tests must pass without any errors or failures before the code can be considered complete.
+
+### 3. Code is reviewed
+All code must be reviewed by at least one other developer to ensure quality and compliance with coding standards. The code review should focus on identifying any bugs, security vulnerabilities, or design flaws that could impact the quality or maintainability of the code.
+
+### 4. Documentation is complete
+All code must be fully documented, including comments within the code and external documentation such as user manuals. The documentation should be comprehensive and accurate, and should provide enough detail for other developers and stakeholders to understand the code.
+
+### 5. Acceptance criteria are met
+The code must meet all the acceptance criteria as defined by the stakeholders. These acceptance criteria are used as a basis for verifying that the code meets the intended requirements
+
+### 6. Security is considered
+The code must be reviewed for security vulnerabilities and any identified issues must be addressed. The code should be designed with security in mind, and should be subject to regular security testing to identify any new vulnerabilities.
 
 ---
 
