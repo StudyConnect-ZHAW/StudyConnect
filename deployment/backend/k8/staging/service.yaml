@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: staging
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 8080       # The port exposed by the service
+      targetPort: 8080  # The port inside the backend container
+  type: ClusterIP  # Keeps it internal to the cluster
