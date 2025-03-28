@@ -53,15 +53,25 @@ When starting work on a new feature or bug fix, create a new branch from the `ma
 When committing changes to the codebase, developers should follow the [Conventional Commits](#conventional-commits) standard. This will ensure that the commit messages are consistent and descriptive, and will allow the commit history to be automatically parsed to generate release notes.
 
 ### 3. Create a draft pull request
-After committing changes to the codebase, create a draft pull request with the prefix `PR: ` to inform other developers that you are working on a new feature or bug fix. The pull request should be kept in draft mode until the feature or bug fix is complete.
+After committing changes to the codebase, create a draft pull request to inform other developers that you are working on a new feature or bug fix. The pull request should be kept in draft mode until the feature or bug fix is complete.
 
-### 4. Create a pull request
+### 4. Keep your branch up-to-date with `main`
+Before marking a pull request as ready for review, your branch **must be up-to-date with the latest changes from `main`**. This helps avoid merge conflicts and ensures compatibility with recent updates.
+
+To update your branch using rebase:
+```bash
+git fetch origin
+git rebase origin/main
+git push --force
+```
+
+### 5. Create a pull request
 When the feature or bug fix is complete, mark the pull request as ready to review to merge the changes into the `main` branch. The pull request should be reviewed by at least one other developer before it can be merged.
 
-### 5. Review pull request
+### 6. Review pull request
 When a pull request is marked as ready for review, it should be reviewed by at least two other developers. The reviewer should verify that the code meets the [Definition of Done](#definition-of-done).
 
-### 6. Merge pull request
+### 7. Merge pull request
 Once the pull request has been reviewed and approved, it can be merged into the `main` branch. The pull request should be merged using the "Rebase and merge" option to ensure that the commit history remains clean and concise.
 
 ## Definition of Done
