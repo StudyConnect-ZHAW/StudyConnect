@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -17,6 +17,3 @@ spec:
           image: ghcr.io/studyconnect-zhaw/backend/staging:0.0.1
           ports:
             - containerPort: 8080
-          envFrom:
-            - secretRef:
-                name: backend-secrets
