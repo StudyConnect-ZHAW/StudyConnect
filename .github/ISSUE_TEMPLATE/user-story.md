@@ -1,7 +1,7 @@
 ---
 name: User Story
 about: User-focused feature that delivers business value
-title: "[US X.X] <Short User Story Title>"
+title: "[USER STORY] <Short User Story Title>"
 labels: user story
 assignees: ''
 
