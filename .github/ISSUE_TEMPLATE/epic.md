@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## Epic: <Epic Title>
+## Epic <X>: <Epic Title>
 
 ### Description
 
