@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: backend-ingress
   annotations:
-    cert-manager.io/cluster-issuer: kube-root-ca.crt # Replace with the name of your ClusterIssuer
     traefik.ingress.kubernetes.io/router.entrypoints: websecure # Tell Traefik to use the 'websecure' entrypoint (for HTTPS)
     traefik.ingress.kubernetes.io/router.tls: "true"      # Enable TLS on the router
 spec:
