@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod # Replace with your ClusterIssuer name
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - api.scmy-studyconnect-staging.pm4.init-lab.ch
+      secretName: backend-tls # Kubernetes Secret to store the certificate
+  rules:
+    - host: api.scmy-studyconnect-staging.pm4.init-lab.ch
+      http:
+        paths:
+          - backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
