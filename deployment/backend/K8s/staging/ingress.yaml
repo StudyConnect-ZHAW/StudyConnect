@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: api.scmy-studyconnect-staging.pm4.init-lab.ch
+    - host: api-scmy-studyconnect-staging.pm4.init-lab.ch
       http:
         paths:
           - backend:
@@ -13,5 +13,5 @@ spec:
                 name: backend-service
                 port:
                   number: 8080
-            path: /
+            path: /swagger
             pathType: Prefix
