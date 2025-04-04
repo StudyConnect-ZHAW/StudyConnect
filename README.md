@@ -2,6 +2,8 @@
 
 Main Repository for the StudyConnect Project
 
+Our [Wiki](https://github.com/StudyConnect-ZHAW/StudyConnect/wiki) contains important documentation regarding the development process and decisions. The structure was inspired by [Arc42](https://arc42.org/), specifically by their [DocChess](https://www.dokchess.de/) example.
+
 ## Project Description
 
 StudyConnect – Platfform für Lern- und Projektgruppen
