@@ -3,15 +3,15 @@ kind: Ingress
 metadata:
   name: backend-ingress
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod # Replace with your ClusterIssuer name
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: kube-root-ca.crt # Replace with the name of your ClusterIssuer
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure # Tell Traefik to use the 'websecure' entrypoint (for HTTPS)
+    traefik.ingress.kubernetes.io/router.tls: "true"      # Enable TLS on the router
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
         - api.scmy-studyconnect-staging.pm4.init-lab.ch
-      secretName: backend-tls # Kubernetes Secret to store the certificate
+      secretName: backend-tls # Kubernetes Secret where the certificate will be stored
   rules:
     - host: api.scmy-studyconnect-staging.pm4.init-lab.ch
       http:
