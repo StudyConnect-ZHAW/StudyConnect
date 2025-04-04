@@ -17,3 +17,6 @@ spec:
           image: ghcr.io/studyconnect-zhaw/backend/staging:0.0.7
           ports:
             - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
