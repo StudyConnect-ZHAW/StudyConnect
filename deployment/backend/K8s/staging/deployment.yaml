@@ -20,3 +20,5 @@ spec:
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=mssql-service;Database=YourDatabase;User Id=sa;Password=${MSSQL_SA_PASSWORD}; # Add connection string

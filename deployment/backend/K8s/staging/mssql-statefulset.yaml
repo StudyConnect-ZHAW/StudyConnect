@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mssql-server
+  namespace: scmy-studyconnect-staging # Replace with your namespace
+spec:
+  serviceName: "mssql-service"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mssql-server
+  template:
+    metadata:
+      labels:
+        app: mssql-server
+    spec:
+      containers:
+      - name: mssql-server
+        image: mcr.microsoft.com/mssql/server:2022-latest # Or your desired version
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: MSSQL_SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql-secret # Use a secret for the password
+              key: MSSQL_SA_PASSWORD
+        ports:
+        - containerPort: 1433
+        volumeMounts:
+        - name: mssql-data
+          mountPath: /var/opt/mssql/data
+  volumeClaimTemplates: []
+  volumes:
+  - name: mssql-data
+    persistentVolumeClaim:
+      claimName: mssql-data-pvc # Ensure this matches the PVC name in mssql-pvc.yaml
