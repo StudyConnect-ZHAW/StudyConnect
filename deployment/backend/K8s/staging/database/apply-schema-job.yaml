@@ -2,15 +2,19 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: apply-db-schema
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
   template:
     spec:
       containers:
       - name: sql-client
-        image: mcr.microsoft.com/mssql-tools:latest # Use the latest mssql-tools image
+        image: mcr.microsoft.com/mssql-tools:latest
+        command: ["/bin/sh", "-c"]
+        args: ["env && sleep 3600"]
         env:
         - name: SQL_SERVER
-          value: "mssql-service.scmy-studyconnect-staging.svc.cluster.local"
+          value: "mssql-service.scmy-studyconnect-staging.svc.cluster.local:1433"
         - name: SQL_USER
           valueFrom:
             secretKeyRef:
@@ -21,19 +25,6 @@ spec:
             secretKeyRef:
               name: mssql-secret
               key: MSSQL_SA_PASSWORD
-        command: ["/opt/mssql-tools/bin/sqlcmd"]
-        args:
-        - "-S"
-        - "$(SQL_SERVER)"
-        - "-U"
-        - "$(SQL_USER)"
-        - "-P"
-        - "$(SQL_PASSWORD)"
-        - "-d"
-        - "master"
-        - "-i"
-        - "/scripts/schema.sql"
-        - "-C" # Accept the certificate
         volumeMounts:
         - name: schema-volume
           mountPath: /scripts
