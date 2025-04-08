@@ -21,8 +21,8 @@ spec:
             secretKeyRef:
               name: mssql-secret
               key: MSSQL_SA_PASSWORD
-        command: ["/opt/mssql-tools/bin/sqlcmd"]
         args:
+        - "/opt/mssql-tools/bin/sqlcmd"
         - "-S"
         - "$(SQL_SERVER)"
         - "-U"
@@ -31,7 +31,12 @@ spec:
         - "$(SQL_PASSWORD)"
         - "-d"
         - "master"
-        - "-C" # Accept the certificate
+        - "-v"  # Use -v to pass variables to the script
+        - "-l"
+        - "30"  # Set login timeout to 30 seconds (default is often shorter)
+        - "-C"  # Accept the certificate
+        - "-i"
+        - "/scripts/schema.sql"
         volumeMounts:
         - name: schema-volume
           mountPath: /scripts
