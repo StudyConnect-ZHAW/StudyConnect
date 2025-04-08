@@ -10,7 +10,7 @@ spec:
         image: mcr.microsoft.com/mssql-tools:latest # Use the latest mssql-tools image
         env:
         - name: SQL_SERVER
-          value: "mssql-service.scmy-studyconnect-staging.svc.cluster.local:1433"
+          value: "mssql-service.scmy-studyconnect-staging.svc.cluster.local"
         - name: SQL_USER
           valueFrom:
             secretKeyRef:
@@ -29,8 +29,6 @@ spec:
         - "$(SQL_USER)"
         - "-P"
         - "$(SQL_PASSWORD)"
-        - "-d"
-        - "studyconnect"
         - "-i"
         - "/scripts/schema.sql"
         - "-C" # Accept the certificate
