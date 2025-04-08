@@ -10,7 +10,7 @@ spec:
         image: mcr.microsoft.com/mssql-tools:latest # Use the latest mssql-tools image
         env:
         - name: SQL_SERVER
-          value: "mssql-server.scmy-studyconnect-staging.svc.cluster.local:1433"
+          value: "mssql-service.scmy-studyconnect-staging.svc.cluster.local:1433"
         - name: SQL_USER
           valueFrom:
             secretKeyRef:
