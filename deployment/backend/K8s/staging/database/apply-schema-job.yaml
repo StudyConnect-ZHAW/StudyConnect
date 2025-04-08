@@ -29,6 +29,8 @@ spec:
         - "$(SQL_USER)"
         - "-P"
         - "$(SQL_PASSWORD)"
+        - "-d"
+        - "master"
         - "-i"
         - "/scripts/schema.sql"
         - "-C" # Accept the certificate
