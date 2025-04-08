@@ -33,6 +33,7 @@ spec:
         - "studyconnect"
         - "-i"
         - "/scripts/schema.sql"
+        - "-C" # Accept the certificate
         volumeMounts:
         - name: schema-volume
           mountPath: /scripts
