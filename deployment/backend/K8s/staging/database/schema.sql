@@ -3,8 +3,21 @@ USE studyconnect;
 
 CREATE TABLE UserRole (
     URole_ID UNIQUEIDENTIFIER PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
+    Name VARCHAR(255) NOT NULL UNIQUE,
     Description VARCHAR(255) NOT NULL
+);
+
+INSERT INTO UserRole (URole_ID, Name, Description)
+SELECT NEWID(), Name, Description
+FROM (
+    SELECT 'Admin' AS Name, 'Administrator' AS Description
+    UNION ALL
+    SELECT 'Student', 'Student'
+    UNION ALL
+    SELECT 'Instructor', 'Instructor'
+) AS Roles
+WHERE NOT EXISTS (
+    SELECT 1 FROM UserRole ur WHERE ur.Name = Roles.Name
 );
 
 CREATE TABLE User (
@@ -31,8 +44,19 @@ CREATE TABLE Group (
 
 CREATE TABLE GroupRole (
     GRole_ID UNIQUEIDENTIFIER PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
+    Name VARCHAR(255) NOT NULL UNIQUE,
     Description VARCHAR(255) NOT NULL
+);
+
+INSERT INTO GroupRole (GRole_ID, Name, Description)
+SELECT NEWID(), Name, Description
+FROM (
+    SELECT 'Admin' AS Name, 'Administrator' AS Description
+    UNION ALL
+    SELECT 'Member', 'Member'
+) AS Roles
+WHERE NOT EXISTS (
+    SELECT 1 FROM GroupRole gr WHERE gr.Name = Roles.Name
 );
 
 CREATE TABLE GroupMember(
@@ -54,8 +78,25 @@ GO
 
 CREATE TABLE ForumCategory(
     FCategory_ID UNIQUEIDENTIFIER PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
+    Name VARCHAR(255) NOT NULL UNIQUE,
     Description VARCHAR(255) NOT NULL
+);
+
+INSERT INTO ForumCategory (FCategory_ID, Name, Description)
+SELECT NEWID(), Name, Description
+FROM (
+    SELECT 'SWEN 1' AS Name, 'Software Engineering 2' AS Description
+    UNION ALL
+    SELECT 'SWEN 2', 'Software Engineering 2'
+    UNION ALL
+    SELECT 'CT1', 'Computer Technik 1'
+    UNION ALL
+    SELECT 'CT2', 'Computer Technik 2'
+    UNION ALL
+    SELECT 'BSY', 'Betriebssysteme'
+) AS Categories
+WHERE NOT EXISTS (
+    SELECT 1 FROM ForumCategory fc WHERE fc.Name = Categories.Name
 );
 
 CREATE TABLE ForumPost(
