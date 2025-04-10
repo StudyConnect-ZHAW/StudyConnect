@@ -31,4 +31,4 @@ spec:
                   name: mssql-secret           # name of the secret in Rancher/K8s
                   key: MSSQL_SA_USER           # key inside the secret
             - name: ConnectionStrings__DefaultConnection
-              value: Server=mssql-service.scmy-studyconnect-staging;Database=studyconnect;User Id=$(MSSQL_SA_PASSWORD);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
+              value: Server=mssql-service.scmy-studyconnect-staging;Database=studyconnect;User Id=$(MSSQL_SA_USER);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
