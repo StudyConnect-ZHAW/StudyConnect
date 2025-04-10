@@ -20,7 +20,15 @@ spec:
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
-            - name: ConnectionStrings__DefaultConnection
-              value: Server=mssql-service.scmy-studyconnect-staging.svc.cluster.local;Database=studyconnect;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True; # Add connection string
             - name: MSSQL_SA_PASSWORD
-              value: ${MSSQL_SA_PASSWORD}
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-secret           # name of the secret in Rancher/K8s
+                  key: MSSQL_SA_PASSWORD       # key inside the secret
+            - name: MSSQL_SA_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-secret           # name of the secret in Rancher/K8s
+                  key: MSSQL_SA_USER           # key inside the secret
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=mssql-service.scmy-studyconnect-staging;Database=studyconnect;User Id=$(MSSQL_SA_PASSWORD);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
