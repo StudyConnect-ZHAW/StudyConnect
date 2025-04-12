@@ -2,6 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  namespace: scmy-studyconnect-staging
+  labels:
+    app: backend
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   replicas: 1
   selector:
@@ -32,3 +37,8 @@ spec:
                   key: MSSQL_SA_USER           # key inside the secret
             - name: ConnectionStrings__DefaultConnection
               value: Server=mssql-service.scmy-studyconnect-staging;Database=studyconnect;User Id=$(MSSQL_SA_USER);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
+
+  initContainers:
+    - name: wait-for-mssql
+      image: busybox
+      command: ['sh', '-c', 'until nc -z mssql-service.scmy-studyconnect-staging 1433; do echo waiting for mssql; sleep 3; done']

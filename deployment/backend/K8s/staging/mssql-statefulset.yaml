@@ -3,6 +3,10 @@ kind: StatefulSet
 metadata:
   name: mssql-server
   namespace: scmy-studyconnect-staging
+  labels:
+    app: mssql-server
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   serviceName: "mssql-service"
   replicas: 1
