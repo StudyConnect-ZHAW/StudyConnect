@@ -1,7 +1,7 @@
 ---
 name: User Story
 about: User-focused feature that delivers business value
-title: "[USER STORY] <Short User Story Title>"
+title: "User Story <X.X>: <Short User Story Title>"
 labels: user story
 assignees: ''
 
@@ -28,12 +28,3 @@ assignees: ''
 - [ ] Acceptance criteria are complete
 - [ ] Dependencies identified
 - [ ] Estimated by the development team
-
-### Definition of Done
-
-- [ ] Acceptance criteria are met
-- [ ] Code is implemented and tested
-- [ ] Code is peer-reviewed
-- [ ] Deployed to DEV environment
-- [ ] Documentation updated (if applicable)
-- [ ] Meets [Global DoD](https://github.com/StudyConnect-ZHAW/StudyConnect/wiki/Scrum-Principles#definition-of-done)
