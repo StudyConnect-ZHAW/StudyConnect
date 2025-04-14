@@ -1,7 +1,7 @@
 ---
 name: Epic
 about: High-level feature grouping multiple user stories
-title: "[EPIC] <Epic Title>"
+title: "Epic <X>: <Epic Title>"
 labels: epic
 assignees: ''
 
