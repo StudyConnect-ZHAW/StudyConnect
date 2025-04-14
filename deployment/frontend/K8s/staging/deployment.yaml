@@ -14,6 +14,29 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/studyconnect-zhaw/frontend/staging:0.0.10
+        image: ghcr.io/studyconnect-zhaw/frontend/staging:0.0.10         
+        env:
+        - name: NEXT_PUBLIC_API_URL
+          value: https://api-scmy-studyconnect-staging.pm4.init-lab.ch
+        - name: CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: CLIENT_ID
+        - name: CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: CLIENT_SECRET 
+        - name: REDIRECT_URI
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: REDIRECT_URI  
+        - name: POST_LOGOUT_REDIRECT_URI
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: POST_LOGOUT_REDIRECT_URI
         ports:
         - containerPort: 3000
