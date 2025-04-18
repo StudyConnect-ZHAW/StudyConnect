@@ -7,6 +7,6 @@ spec:
     app: frontend
   ports:
   - protocol: TCP
-    port: 3300
+    port: 3000
     targetPort: 3000
   type: ClusterIP
