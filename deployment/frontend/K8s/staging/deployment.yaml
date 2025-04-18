@@ -38,5 +38,10 @@ spec:
             secretKeyRef:
               name: frontend-secrets
               key: POST_LOGOUT_REDIRECT_URI
+        - name: TENANT_SUBDOMAIN
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: TENANT_SUBDOMAIN
         ports:
         - containerPort: 3000
