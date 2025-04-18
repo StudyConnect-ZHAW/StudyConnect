@@ -17,7 +17,10 @@ spec:
         image: ghcr.io/studyconnect-zhaw/frontend/staging:0.0.11
         env:
         - name: NEXT_PUBLIC_API_URL
-          value: https://api-scmy-studyconnect-staging.pm4.init-lab.ch/api
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: NEXT_PUBLIC_API_URL
         - name: CLIENT_ID
           valueFrom:
             secretKeyRef:
