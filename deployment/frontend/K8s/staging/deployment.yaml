@@ -46,5 +46,10 @@ spec:
             secretKeyRef:
               name: frontend-secrets
               key: TENANT_SUBDOMAIN
+        - name: BASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: frontend-secrets
+              key: BASE_URL
         ports:
         - containerPort: 3000
