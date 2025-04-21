@@ -2,15 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mssql-service
-  namespace: scmy-studyconnect-staging # Namespace for the MSSQL service
+  namespace: scmy-studyconnect-staging
   labels:
-    app: mssql-server  # Label for the MSSQL Server Pod
+    app: mssql-server
 spec:
-  type: NodePort
+  type: LoadBalancer  # Change this to LoadBalancer to expose it externally
   selector:
-    app: mssql-server  # Label matching the MSSQL Server Pod
+    app: mssql-server
   ports:
-  - protocol: TCP
-    port: 1433       # Internal port for the service
-    targetPort: 1433   # Port on the MSSQL Server container
-    nodePort: 31433   # NodePort for external access
+    - protocol: TCP
+      port: 1433       # Internal port for the service
+      targetPort: 1433  # Port on the MSSQL Server container
