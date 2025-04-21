@@ -6,9 +6,11 @@ metadata:
   labels:
     app: mssql-server  # Label for the MSSQL Server Pod
 spec:
+  type: NodePort
   selector:
     app: mssql-server  # Label matching the MSSQL Server Pod
   ports:
   - protocol: TCP
     port: 1433       # Internal port for the service
     targetPort: 1433   # Port on the MSSQL Server container
+    nodePort: 31433   # NodePort for external access
