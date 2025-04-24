@@ -62,6 +62,18 @@ To update your branch using rebase:
 ```bash
 git fetch origin
 git rebase origin/main
+```
+
+If you encounter any merge conflicts during the rebase, resolve them manually, then run:
+```
+git add <resolved-files>
+git rebase --continue
+```
+
+Repeat this process until the rebase is complete.
+
+Finally, force-push the updated branch:
+```
 git push --force
 ```
 
