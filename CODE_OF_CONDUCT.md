@@ -2,12 +2,12 @@
 
 ## Contact Person
 
-- **Scrum Master:** Adrian Martinez
+- **Product Owner:** Adrian Martinez
 - **Frontend Team Lead:** Sumaya Mohat
 - **Backend Team Lead:** Sebastian Fröhlicher
-- **DevOps Team Lead:** Daniel Bucher
+- **DevOps Lead & Scrum Master:** Daniel Bucher
 
-If you have questions, blockers, or issues, talk to the responsible person first. If the responsible person can't help, or you don't get a response within a reasonable time, escalate to Adrian.
+If you have questions, blockers, or issues, talk to the responsible person first. If the responsible person can't help, or you don't get a response within a reasonable time, escalate to Daniel Bucher or Adrian Martinez.
 
 ## Conventional Commits
 
@@ -112,6 +112,6 @@ The code must be reviewed for security vulnerabilities and any identified issues
 
 ---
 
-If you’re ever unsure about anything — whether it’s a task, a process, or how we work as a team — just ask Adrian. It’s always better to clarify early than to be stuck or make assumptions.
+If you’re ever unsure about anything — whether it’s a task, a process, or how we work as a team — just ask. It’s always better to clarify early than to be stuck or make assumptions.
 
 We’re here to create an interesting and fun project, and good communication makes everything easier.
