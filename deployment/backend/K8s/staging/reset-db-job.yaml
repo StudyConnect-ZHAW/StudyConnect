@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: reset-db
+spec:
+  template:
+    spec:
+      containers:
+        - name: migrate
+          image: ghcr.io/studyconnect-zhaw/backend/staging:0.2.9
+          command: ["dotnet", "ef", "database", "drop", "--force", "--no-build"]
+          # optionally followed by `dotnet ef database update`
+      restartPolicy: Never
