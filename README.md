@@ -16,7 +16,6 @@ StudyConnect ist eine Plattform, die Studierende dabei unterstützt, Lern- und P
 - [Backend Repository](https://github.com/StudyConnect-ZHAW/Backend)
 - [Webseite](https://scmy-studyconnect-staging.pm4.init-lab.ch)
 - [Backend Webseite](https://api-scmy-studyconnect-staging.pm4.init-lab.ch/swagger/)
-  
 - [Sprint Backlog](https://github.com/orgs/StudyConnect-ZHAW/projects/1)
 - [Product Backlog](https://github.com/orgs/StudyConnect-ZHAW/projects/3)
 
