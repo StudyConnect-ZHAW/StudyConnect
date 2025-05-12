@@ -35,16 +35,16 @@ spec:
                 secretKeyRef:
                   name: mssql-secret           # name of the secret in Rancher/K8s
                   key: MSSQL_SA_USER           # key inside the secret
+            - name: TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: TENANT_ID 
             - name: CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: frontend-secrets
+                  name: frontend-secrets      # CLient ID Secret from the frontend secrets
                   key: CLIENT_ID
-            - name: CLIENT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: frontend-secrets
-                  key: CLIENT_SECRET 
             - name: ConnectionStrings__DefaultConnection
               value: Server=mssql-service.scmy-studyconnect-staging;Database=studyconnect;User Id=$(MSSQL_SA_USER);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
 
