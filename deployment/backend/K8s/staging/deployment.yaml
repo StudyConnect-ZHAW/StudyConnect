@@ -47,6 +47,14 @@ spec:
                   key: CLIENT_ID
             - name: ConnectionStrings__DefaultConnection
               value: Server=mssql-service.scmy-studyconnect-staging;Database=studyconnect;User Id=$(MSSQL_SA_USER);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
+            - name: Entra__Instance
+              value: $(TENANT_ID)
+            - name: Entra__TenantId
+              value: $(TENANT_ID)
+            - name: Entra__ClientId
+              value: $(CLIENT_ID)
+            - name: Entra__Audience
+              value: api://$(CLIENT_ID)
 
   initContainers:
     - name: wait-for-mssql
