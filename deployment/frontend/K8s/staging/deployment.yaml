@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/studyconnect-zhaw/frontend/staging:0.0.22
+        image: ghcr.io/studyconnect-zhaw/frontend/staging:0.0.23
         env:
         - name: NEXT_PUBLIC_API_URL
           valueFrom:
