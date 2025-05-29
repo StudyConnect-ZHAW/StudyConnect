@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/studyconnect-zhaw/backend/staging:0.2.19
+          image: ghcr.io/studyconnect-zhaw/backend/staging:0.2.20
           ports:
             - containerPort: 8080
           env:
