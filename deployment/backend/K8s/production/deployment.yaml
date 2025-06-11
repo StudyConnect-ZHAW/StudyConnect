@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: scmy-studyconnect-production
+  labels:
+    app: backend
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/studyconnect-zhaw/backend/production:0.2.26
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-secret           # name of the secret in Rancher/K8s
+                  key: MSSQL_SA_PASSWORD       # key inside the secret
+            - name: MSSQL_SA_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-secret           # name of the secret in Rancher/K8s
+                  key: MSSQL_SA_USER           # key inside the secret
+            - name: TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: TENANT_ID 
+            - name: CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: frontend-secrets      # CLient ID Secret from the frontend secrets
+                  key: CLIENT_ID
+            - name: ConnectionStrings__DefaultConnection
+              value: Server=mssql-service.scmy-studyconnect-production;Database=studyconnect;User Id=$(MSSQL_SA_USER);Password=$(MSSQL_SA_PASSWORD);TrustServerCertificate=True;
+            - name: Entra__Instance
+              value: https://$(TENANT_ID).ciamlogin.com/
+            - name: Entra__TenantId
+              value: $(TENANT_ID)
+            - name: Entra__ClientId
+              value: $(CLIENT_ID)
+            - name: Entra__Audience
+              value: api://$(CLIENT_ID)
+
+  initContainers:
+    - name: wait-for-mssql
+      image: busybox
+      command: ['sh', '-c', 'until nc -z mssql-service.scmy-studyconnect-production 1433; do echo waiting for mssql; sleep 3; done']

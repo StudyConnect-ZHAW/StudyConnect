@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: production
+data:
+  BACKEND_URL: "http://backend.production.svc.cluster.local:8080"
